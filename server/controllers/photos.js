@@ -87,15 +87,21 @@ function * uploadPhoto() {
 }
 
 function cleanupText(text) {
-  return text.replace(/[^\w\d'"!\.,:\?#\$%&\-]+/g, " ").trim();
+  //return text.replace(/[^\w\d'"!\.,:\?#\$%&\-]+/g, " ").trim();
+  var myDate = text.replace(/(1[1-2]|(?:0|)[1-9]|jan(?:uary|)|feb(?:ruary|)|mar(?:ch)|apr(?:il|)|may|jun(?:e|)|jul(?:y|)|aug(?:ust|)|oct(?:ober|)|nov(?:ember)|dec(?:ember))[\-\.\s\\\/](?:(0[1-9]|1[0-9]|2[0-9]|3[0-1]))[\-\.\s\\\/]((?:[12][91]|)[8901][0-9])/i);
+  var description = text.replace(/(?:(http|https)😕/\/|)(?😞\w+)\.|)(\w+)\.(\w{2}(?:\w{2,3}|)|\w{3})(?:$|\s)/i);
+
+
+  return {
+    date:  myDate,
+    summary: description
+  };
 }
 
 function * parseOcrData(filepath) {
-  return {
-    text: cleanupText(yield nodecr.process(filepath, 'eng', 1, null, nodecr.preprocessors.convert, [{
+  return cleanupText(yield nodecr.process(filepath, 'eng', 1, null, nodecr.preprocessors.convert, [{
       '-resize': '1000%'
     }]))
-  }
 }
 
 function * generateIcal() {
