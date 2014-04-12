@@ -4,7 +4,7 @@ exports.config = {
 		'browserName': 'chrome'
 	},
 	framework: 'cucumber',
-	specs: ['features/*.feature'],
+	specs: ['features/ocr*.feature'],
 	cucumberOpts: {
 		format: 'pretty',
 	},

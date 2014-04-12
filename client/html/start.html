@@ -6,3 +6,7 @@
 
 <img class="preview-photo" ng-src="{{previewPhotoUrl}}">
 {{ previewPhotoUrl }}
+
+<div class="upload-progress" ng-style="{ width: (uploadPercentage * 100) + '%' }" ng-show="uploadProgress != null">{{ uploadProgress * 100 }} %</div>
+
+<div class="event-preview"></div>

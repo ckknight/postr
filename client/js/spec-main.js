@@ -16,7 +16,8 @@ requirejs.config({
     'es5-sham': '../bower_components/es5-shim/es5-sham',
     'es6-shim': '../bower_components/es6-shim/es6-shim',
     'angular-ui-router': '../bower_components/angular-ui-router/release/angular-ui-router',
-    'lodash': '../bower_components/lodash/dits/lodash'
+    'lodash': '../bower_components/lodash/dits/lodash',
+    'angular-file-upload': '../bower_components/angularjs-file-upload/angular-file-upload'
   },
 
   shim: {

@@ -71,4 +71,30 @@ module.exports = function () {
 
   });
 
+  this.Given(/have taken a picture of the poster/, function * () {
+
+    //TODO: stick picture in input field
+  });
+
+  this.Given(/scanning image progress bar has been presented/, function * () {
+    //TODO: initiate upload?
+    expect($(".upload-progress").isDisplayed()).to.eventually.be.true;
+  });
+
+  this.When(/progress bar is completed/, function * () {
+    var MILLISECONDS_TO_WAIT = 1000;
+    var MILLISECONDS_PER_TICK = 50;
+    var count = 0;
+    while (yield $(".upload-progress").isDisplayed()) {
+      if (count > 0) {
+        yield browser.sleep(MILLISECONDS_PER_TICK);
+      }
+      expect(count).to.be.lessThan(MILLISECONDS_TO_WAIT / MILLISECONDS_PER_TICK);
+      ++count;
+    }
+  });
+
+  this.Then(/event preview screen is displayed/, function * () {
+    expect($(".event-preview").isPresent()).to.eventually.be.true;
+  });
 };

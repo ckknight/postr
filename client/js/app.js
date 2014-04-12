@@ -2,10 +2,12 @@ define(function (require) {
   'use strict';
 
   require('angular-ui-router');
+  require('angular-file-upload');
 
   return angular
     .module('myApp', [
-      'ui.router'
+      'ui.router',
+      'angularFileUpload'
     ])
     .controller('AppController', require('./controllers/AppController'))
     .controller('StartController', require('./controllers/StartController'))
