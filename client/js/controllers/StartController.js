@@ -81,7 +81,7 @@ define(function () {
 			$scope.uploadError = null;
 
 			function onUploadSuccess(result) {
-				$scope.event = result;
+				$scope.event = result.data;
 			}
 
 			function onUploadFailure(reason) {

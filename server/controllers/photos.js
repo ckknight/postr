@@ -10,11 +10,13 @@ var route = require('koa-route'),
   path = require('path'),
   os = require('os'),
   nodecr = require('../config/co-nodecr'),
-  icalendar = require('icalendar');
+  icalendar = require('icalendar'),
+  qs = require('qs');
 
 exports.init = function (app) {
   app.use(route.post('/api/upload-photo', uploadPhoto));
-  app.use(route.post('/api/generate-ical', generateIcal));
+  app.use(route.get('/api/generate-ical.ics', generateIcal));
+  app.use(route.post('/api/generate-ical.ics', generateIcal));
 };
 
 function dataUrlToBuffer(url) {
@@ -99,7 +101,7 @@ function * parseOcrData(filepath) {
 }
 
 function * generateIcal() {
-  var body = yield parseBody(this.request, {
+  var body = this.method === "GET" ? qs.parse(this.querystring) : yield parseBody(this.request, {
     limit: '10kb'
   });
 
