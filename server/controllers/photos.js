@@ -42,8 +42,6 @@ function * uploadPhoto(next) {
   }
 
   this.body = {
-    text: yield nodecr.process(filepath, 'eng', null, null, [{
-      rotate: '90deg'
-    }])
+    text: yield nodecr.process(filepath, 'eng', 1)
   };
 }
