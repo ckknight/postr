@@ -8,7 +8,7 @@ var path = require('path'),
  */
 var baseConfig = {
   app: {
-    name: "Inkling",
+    name: "Postr",
     root: path.normalize(path.join(__dirname, '../..')),
     port: process.env.PORT || 3000,
     env: process.env.NODE_ENV || 'development',
