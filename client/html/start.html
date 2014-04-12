@@ -4,9 +4,11 @@
 
 <button class="take-photo" ng-click="takePhoto()">Take Photo</button>
 
-<img class="preview-photo" ng-src="{{previewPhotoUrl}}">
-{{ previewPhotoUrl }}
+<img class="preview-photo" ng-src="{{ previewPhotoUrl }}">
 
 <div class="upload-progress" ng-style="{ width: (uploadPercentage * 100) + '%' }" ng-show="uploadProgress != null">{{ uploadProgress * 100 }} %</div>
+
+{{ uploadResult }}
+{{ uploadError }}
 
 <div class="event-preview"></div>

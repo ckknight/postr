@@ -21,13 +21,15 @@ define(function () {
 
 			// TODO: move file upload to a provider, maybe
 			$scope.uploadProgress = 0;
+			$scope.uploadResult = null;
+			$scope.uploadError = null;
 
 			function onUploadSuccess(result) {
-				throw new Error("Not implemented");
+				$scope.uploadResult = result;
 			}
 
 			function onUploadFailure(reason) {
-				throw new Error("Not implemented");
+				$scope.uploadError = reason;
 			}
 
 			function onUploadProgress() {
@@ -39,7 +41,9 @@ define(function () {
 				data: {},
 				headers: {},
 				file: file
-			}).then(onUploadSuccess, onUploadFailure, onUploadProgress);
+			}).then(onUploadSuccess, onUploadFailure, onUploadProgress)["finally"](function () {
+				$scope.uploadProgress = null;
+			});
 		};
 	}
 

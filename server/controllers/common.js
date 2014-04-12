@@ -1,7 +1,5 @@
 'use strict';
 
-var route = require('koa-route');
-
 exports.init = function (app) {
   app.use(handle404);
 };

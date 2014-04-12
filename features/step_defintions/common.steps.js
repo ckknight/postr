@@ -82,7 +82,7 @@ module.exports = function () {
   });
 
   this.When(/progress bar is completed/, function * () {
-    var MILLISECONDS_TO_WAIT = 1000;
+    var MILLISECONDS_TO_WAIT = 5000;
     var MILLISECONDS_PER_TICK = 50;
     var count = 0;
     while (yield $(".upload-progress").isDisplayed()) {

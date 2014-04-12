@@ -17,7 +17,15 @@ var fs = require('fs'),
 module.exports = function (app) {
   // middleware configuration
   app.use(responseTime());
-  app.use(err());
+  app.use(function * (next) {
+    try {
+      yield next;
+    } catch (err) {
+      this.status = err.status || 500;
+      this.body = err.message || require('http').STATUS_CODES[this.status];
+      this.app.emit('error', err, this);
+    }
+  });
 
   if (config.app.env !== 'test') {
     app.use(logger());
