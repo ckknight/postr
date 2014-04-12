@@ -54,23 +54,24 @@ function * uploadPhoto() {
   });
   var image = body.image;
   var tmpDir = path.join(os.tmpdir(), "postr");
+  try {
+    yield fs.mkdir(tmpDir);
+  } catch (e) {
+    if (e.code !== "EEXIST") {
+      throw e;
+    }
+  }
   var filepath = null;
   if (image) {
     var data = dataUrlToBuffer(image);
     filepath = path.join(tmpDir, random.uuid4() + contentTypeToExtension(data.type));
+    console.log("writing " + filepath);
     yield fs.writeFile(filepath, data.buffer);
   } else {
     var parts = parse(this, {
       autoFields: true
     });
 
-    try {
-      yield fs.mkdir(tmpDir);
-    } catch (e) {
-      if (e.code !== "EEXIST") {
-        throw e;
-      }
-    }
     var count;
     var part;
     for (count = 0; part = yield parts; ++count) {
@@ -78,6 +79,7 @@ function * uploadPhoto() {
         throw new Error("Only expected one file uploaded");
       }
       filepath = path.join(tmpDir, random.uuid4() + path.extname(part.filename));
+      console.log("writing " + filepath);
       yield saveTo(part, filepath);
     }
     if (!filepath) {
@@ -95,15 +97,15 @@ function cleanupText(text) {
 
 
   return {
-    date:  myDate,
+    date: myDate,
     summary: description
   };
 }
 
 function * parseOcrData(filepath) {
   return cleanupText(yield nodecr.process(filepath, 'eng', 1, null, nodecr.preprocessors.convert, [{
-      '-resize': '1000%'
-    }]))
+    '-resize': '1000%'
+  }]))
 }
 
 function * generateIcal() {
