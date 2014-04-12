@@ -1,0 +1,10 @@
+<form class="event-form">
+	<p><label>Summary: <input type="text" ng-model="event.summary"></label></p>
+	<p><label>Description: <input type="text" ng-model="event.description"></label></p>
+	<p><label>Location: <input type="text" ng-model="event.location"></label></p>
+	<p><label>Description: <input type="text" ng-model="event.description"></label></p>
+	<p><label>Date: <input type="datetime-local" ng-model="event.date"></label></p>
+	<p><label>Duration: <input type="number" ng-model="event.duration"></label></p>
+
+	<p><button ng-click="generateIcalendarEvent()">Generate Calendar Event</button></p>
+</form>

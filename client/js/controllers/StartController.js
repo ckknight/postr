@@ -78,11 +78,10 @@ define(function () {
 
 			// TODO: move file upload to a provider, maybe
 			$scope.uploadProgress = 0;
-			$scope.uploadResult = null;
 			$scope.uploadError = null;
 
 			function onUploadSuccess(result) {
-				$scope.uploadResult = result;
+				$scope.event = result;
 			}
 
 			function onUploadFailure(reason) {

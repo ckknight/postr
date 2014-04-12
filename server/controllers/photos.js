@@ -9,10 +9,12 @@ var route = require('koa-route'),
   random = new Random(Random.engines.nativeMath),
   path = require('path'),
   os = require('os'),
-  nodecr = require('../config/co-nodecr');
+  nodecr = require('../config/co-nodecr'),
+  icalendar = require('icalendar');
 
 exports.init = function (app) {
   app.use(route.post('/api/upload-photo', uploadPhoto));
+  app.use(route.post('/api/generate-ical', generateIcal));
 };
 
 function dataUrlToBuffer(url) {
@@ -44,7 +46,7 @@ function contentTypeToExtension(type) {
   }
 }
 
-function * uploadPhoto(next) {
+function * uploadPhoto() {
   var body = yield parseBody(this.request, {
     limit: '1000kb'
   });
@@ -94,4 +96,18 @@ function * parseOcrData(filepath) {
       '-resize': '1000%'
     }]))
   }
+}
+
+function * generateIcal() {
+  var body = yield parseBody(this.request, {
+    limit: '10kb'
+  });
+
+  var event = new icalendar.VEvent();
+  event.setSummary(body.summary);
+  event.setDescription(body.location);
+  event.setDescription(body.description);
+  event.setDate(body.date, body.duration);
+  this.type = 'text/calendar';
+  this.body = event.toString();
 }

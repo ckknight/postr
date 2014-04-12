@@ -46,7 +46,8 @@
     "co-fs": "~1.2.0",
     "random-js": "~1.0.2",
     "save-to": "~1.0.2",
-    "koa-body-parser": "~1.0.0"
+    "koa-body-parser": "~1.0.0",
+    "icalendar": "~0.6.5"
   },
   "devDependencies": {
     "grunt-env": "~0.4",

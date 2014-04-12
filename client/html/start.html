@@ -1,5 +1,3 @@
-<h1>wat: {{ name }}</h1>
-
 <input class="camera-upload" type="file" accept="image/*;capture=camera" onchange="angular.element(this).scope().onUpload(this)">
 
 <button class="take-photo" ng-click="takePhoto()" ng-hide="previewPhotoUrl">Take Photo</button>
@@ -8,7 +6,5 @@
 
 <div class="upload-progress" ng-style="{ width: (uploadPercentage * 100) + '%' }" ng-show="uploadProgress != null">{{ uploadProgress * 100 }} %</div>
 
-{{ uploadResult }}
-{{ uploadError }}
-
-<div class="event-preview"></div>
+<div class="event-preview" ng-controller="EventController" ng-include="'html/event.html'" ng-show="event">
+</div>

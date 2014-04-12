@@ -10,6 +10,7 @@ define(function (require) {
       'angularFileUpload'
     ])
     .controller('AppController', require('./controllers/AppController'))
+    .controller('EventController', require('./controllers/EventController'))
     .controller('StartController', require('./controllers/StartController'))
     .config(['$urlRouterProvider', '$stateProvider',
       function ($urlRouterProvider, $stateProvider) {
