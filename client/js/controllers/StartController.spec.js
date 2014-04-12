@@ -1,11 +1,11 @@
 define(function () {
-  describe('HomeController', function () {
+  describe('StartController', function () {
     var controller, scope;
 
     beforeEach(module('myApp'));
     beforeEach(inject(function ($controller, $rootScope) {
       scope = $rootScope.$new();
-      controller = $controller('HomeController', {
+      controller = $controller('StartController', {
         $scope: scope
       });
     }));

@@ -28,9 +28,9 @@ module.exports = function (app) {
   app.use(etag());
   if (config.app.env === 'development') {
     // upgrade to the real koa-livereload when issue #5 is fixed
-    app.use(require('./koa-livereload')({
+    /*app.use(require('./koa-livereload')({
       excludes: ['/modules', '/templates']
-    }));
+    }));*/
   }
 
   if (config.app.env !== 'production') {

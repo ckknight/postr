@@ -8,16 +8,16 @@ define(function (require) {
       'ui.router'
     ])
     .controller('AppController', require('./controllers/AppController'))
-    .controller('HomeController', require('./controllers/HomeController'))
+    .controller('StartController', require('./controllers/StartController'))
     .config(['$urlRouterProvider', '$stateProvider',
       function ($urlRouterProvider, $stateProvider) {
         $urlRouterProvider.otherwise('/');
 
         $stateProvider
-          .state('home', {
+          .state('start', {
             url: '/',
-            templateUrl: 'html/home.html',
-            controller: 'HomeController'
+            templateUrl: 'html/start.html',
+            controller: 'StartController'
           })
       }
     ]);

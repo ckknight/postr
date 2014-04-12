@@ -1,0 +1,8 @@
+<h1>wat: {{ name }}</h1>
+
+<input class="camera-upload" type="file" accept="image/*;capture=camera" onchange="angular.element(this).scope().onUpload(this)">
+
+<button class="take-photo" ng-click="takePhoto()">Take Photo</button>
+
+<img class="preview-photo" ng-src="{{previewPhotoUrl}}">
+{{ previewPhotoUrl }}

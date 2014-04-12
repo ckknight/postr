@@ -6,5 +6,6 @@ Feature: User starts application
 Scenario: Take a picture of an event poster
 	Given I have found an event poster
 	And I have activated the Postr app
-	When I press Postr button
-	Then a photo of event poster should be taken
+	When I press "take photo" button
+	And choose a photo
+	Then the photo is displayed
