@@ -25,7 +25,7 @@
     "passport-twitter": "~1.0",
     "passport-google-oauth": "~0.1",
     "co": "~3.0",
-    "co-body": "~0.0.1",
+    "co-body": "0.0.1",
     "co-mongo": "~0.0.1",
     "lodash": "~2.4",
     "ws": "~0.4",
@@ -45,7 +45,8 @@
     "co-busboy": "~1.0.2",
     "co-fs": "~1.2.0",
     "random-js": "~1.0.2",
-    "save-to": "~1.0.2"
+    "save-to": "~1.0.2",
+    "koa-body-parser": "~1.0.0"
   },
   "devDependencies": {
     "grunt-env": "~0.4",
